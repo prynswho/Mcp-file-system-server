@@ -7,10 +7,9 @@ COPY src ./src
 
 RUN pip install --no-cache-dir .
 
-RUN mkdir -p /workspace
 
 ENV PYTHONPATH=/app/src
-ENV WORKSPACE_ROOT=/workspace
+ENV WORKSPACE_ROOT=/Users/priyanshu/Desktop/agenticWorkflow
 ENV LOG_LEVEL=INFO
 
 EXPOSE 8000

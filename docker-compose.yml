@@ -11,5 +11,5 @@ services:
       WORKSPACE_ROOT: /workspace
       LOG_LEVEL: INFO
 
-    # volumes:
-    #   - ./workspace:/workspace
+    volumes:
+      - /Users/priyanshu/Desktop/agenticWorkflow:/workspace
