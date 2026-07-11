@@ -10,7 +10,7 @@ from .tools.file_system import (
     edit_replace_file as edit_replace_file_impl,
 )
 
-mcp = FastMCP("filesystem")
+mcp = FastMCP("filesystem", host="0.0.0.0", port=8000)
 
 @mcp.tool()
 def create_folder(path:str) -> dict:
