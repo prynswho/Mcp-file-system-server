@@ -1,15 +1,13 @@
-import os
+import os,logging
+from ..gaurd import resolve_safe_path
+from ..logging_setup import configure_logging
 
+
+configure_logging()
+log = logging.getLogger("filesystem_mcp")
 
 WORKSPACE_ROOT = os.path.abspath(
     os.getenv("WORKSPACE_ROOT", "/agent/workspace"))
-
-def resolve_safe_path(path:str) -> str:
-    #path should be extension of the WORKSPACE_ROOT if not then throw error
-    full = os.path.normpath(os.path.join(WORKSPACE_ROOT, path))
-    if not full.startswith(WORKSPACE_ROOT):
-        raise ValueError(f"Path {path} is not a safe path under workspace root {WORKSPACE_ROOT}")
-    return full
 
 def create_folder(path:str) -> dict:
     safe_path = resolve_safe_path(path)
@@ -26,6 +24,7 @@ def read_file(path:str) -> dict:
     safe_path = resolve_safe_path(path)
     if not os.path.exists(safe_path):
         return {"success": False, "error": "File does not exist", "path": safe_path}
+    log.info("read_file %s", safe_path)
     with open(safe_path, 'r') as f:
         content = f.read()
     return {"success": True, "path": safe_path, "content": content}

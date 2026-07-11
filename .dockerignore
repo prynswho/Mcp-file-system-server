@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.git/
+.gitignore
+agent_workspace/
+tests/
+*.md
+pyrightconfig.json

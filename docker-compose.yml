@@ -1,0 +1,15 @@
+services:
+  filesystem-mcp:
+    build:
+      context: .
+      dockerfile: dockerfile
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      WORKSPACE_ROOT: /workspace
+      LOG_LEVEL: INFO
+
+    # volumes:
+    #   - ./workspace:/workspace
